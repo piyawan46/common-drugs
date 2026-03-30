@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Drugs</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  max-width: 500px;
+  width: 100%;
+  padding: 15px;
+}
+
+.header {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #C43999;
+  margin-bottom: 15px;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.card {
+  display: none;
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.section {
+  margin-bottom: 10px;
+}
+
+.title {
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.drug-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1976d2;
+  margin-bottom: 10px;
+}
+
+.summary {
+  margin-top: 10px;
+  padding: 10px;
+  background: #fff3e0;
+  border-radius: 10px;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="main">
+
+<div class="header">Common Drugs</div>
+
+<select onchange="showDrug(this.value)">
+  <option value="" disabled selected>👉 เลือกยาเพื่อแสดงข้อมูล</option>
+  <option value="thiamine">Thiamine</option>
+  <option value="furosemide">Furosemide</option>
+  <option value="omeprazole">Omeprazole</option>
+  <option value="dexamethasone">Dexamethasone</option>
+  <option value="keppra">Keppra</option>
+</select>
+
+<div id="content" class="card"></div>
+
+</div>
+
+<script>
+function showDrug(drug) {
+  let content = "";
+  const card = document.getElementById("content");
+
+  if (!drug) {
+    card.style.display = "none";
+    return;
+  }
+
+  if (drug === "thiamine") {
+    content = `
+    <div class="drug-name">Thiamine</div>
+    <div class="section"><span class="title">1. Indication:</span><br>
+   Vitamin B1 deficiency (alcohol use)</div>
+
+    <div class="section"><span class="title">2. Dilute:</span><br>
+    Dilute: D5W, NSS<br>
+    IV push: สามารถให้ slow IV push ได้ (ไม่ต้อง dilute)<br>
+    IV infusion: ผสมใน NSS หรือ D5W 50–100 mL<br>
+    IM: ให้ได้โดยไม่ต้องผสม</div>
+
+    <div class="section"><span class="title">3. Onset of Action:</span><br>
+    IV: เริ่มออกฤทธิ์ได้อย่างรวดเร็วภายในไม่กี่นาที<br>
+    IM: 10–20 นาที</div>
+
+    <div class="section"><span class="title">4. Drug-Drug Interactions:</span><br>
+    การดื่มแอลกอฮอล์อาจลดการดูดซึมของ thiamine<br> 
+    ยาขับปัสสาวะกลุ่ม loop เช่น furosemide อาจเพิ่มการขับ thiamine ออกจากร่างกาย</div>
+
+    <div class="key Alert">⚡ ห้ามให้ glucose ก่อน thiamine ในผู้ป่วย alcohol เสี่ยง Wernicke’s encephalopathy</div>
+    `;
+  }
+
+  else if (drug === "omeprazole") {
+  content = `
+  <div class="drug-name">Omeprazole</div>
+
+  <div class="section"><span class="title">1. Indication:</span><br>
+  PUD, GERD, stress ulcer prophylaxis</div>
+
+  <div class="section"><span class="title">2. Dilute:</span><br>
+  IV: ผสม NSS หรือ D5W 100 mL<br>
+  ให้ IV infusion 20–30 นาที<br>
+  (หรือ IV push ช้า ≥ 2.5 นาที)</div>
+
+  <div class="section"><span class="title">3. Onset of Action:</span><br>
+  ภายใน 1 ชม. | Peak: 2 ชม.</div>
+
+  <div class="section"><span class="title">4. Drug-Drug Interactions:</span><br>
+  Clopidogrel → ↓ antiplatelet effect<br>
+  Warfarin → ↑ bleeding risk<br>
+  Phenytoin → ↑ drug level</div>
+
+  <div class="key Alert">⚡ หลีกเลี่ยงใช้ร่วม clopidogrel → ลดฤทธิ์ยา</div>
+  `;
+}
+
+  else if (drug === "furosemide") {
+  content = `
+  <div class="drug-name">Furosemide</div>
+
+  <div class="section"><span class="title">1. Indication:</span><br>
+  Edema (HF, CKD, cirrhosis), pulmonary edema, hyperkalemia</div>
+
+  <div class="section"><span class="title">2. Dilute:</span><br>
+  IV push: ให้ช้า ≤ 20 mg/min<br>
+  IV infusion: ผสม NSS หรือ D5W 50–100 mL</div>
+
+  <div class="section"><span class="title">3. Onset of Action:</span><br>
+  IV: 5 นาที | Peak: 30 นาที | Duration: ~2 ชม.</div>
+
+  <div class="section"><span class="title">4. Drug-Drug Interactions:</span><br>
+  Aminoglycosides → ↑ ototoxicity<br>
+  Digoxin → ↑ toxicity (K⁺ ต่ำ)<br>
+  NSAIDs → ↓ efficacy<br>
+  ACEI/ARB → ↑ hypotension/renal impairment</div>
+
+  <div class="key Alert">⚡ ให้เร็วเกิน → เสี่ยงหูหนวก | K⁺ ต่ำ → เสี่ยง arrhythmia</div>
+  `;
+}
+
+  else if (drug === "keppra") {
+  content = `
+  <div class="drug-name">Levetiracetam (Keppra)</div>
+
+  <div class="section"><span class="title">1. Indication:</span><br>
+  Seizure control</div>
+
+  <div class="section"><span class="title">2. Dilute:</span><br>
+  IV infusion: ผสม NSS หรือ D5W 100 mL<br>
+  ให้ใน 15 นาที (ห้าม IV push เร็ว)</div>
+
+  <div class="section"><span class="title">3. Onset of Action:</span><br>
+  IV: 15–30 นาที</div>
+
+  <div class="section"><span class="title">4. Drug-Drug Interactions:</span><br>
+  CNS depressants → ↑ sedation (diazepam, morphine)<br>
+  Methotrexate → ↑ toxicity</div>
+
+  <div class="key Alert">⚡ ห้ามหยุดยา abrupt → ชัก rebound</div>
+  `;
+}
+
+  else if (drug === "dexamethasone") {
+  content = `
+  <div class="drug-name">Dexamethasone</div>
+
+  <div class="section"><span class="title">1. Indication:</span><br>
+  Anti-inflammatory, cerebral edema, anaphylaxis adjunct</div>
+
+  <div class="section"><span class="title">2. Dilute:</span><br>
+  IV push: ให้ช้าได้<br>
+  IV infusion: ผสม NSS หรือ D5W 50–100 mL</div>
+
+  <div class="section"><span class="title">3. Onset of Action:</span><br>
+  IV: 1 ชั่วโมง</div>
+
+  <div class="section"><span class="title">4. Drug-Drug Interactions:</span><br>
+  NSAIDs → ↑ GI bleeding<br>
+  Insulin → ↑ blood glucose<br>
+  Vaccines → ↓ immune response</div>
+
+  <div class="key Alert">⚡ ระวังน้ำตาลสูง + เสี่ยงติดเชื้อ</div>
+  `;
+}
+
+
+  card.innerHTML = content;
+  card.style.display = "block"; // 🔥 แสดงเมื่อเลือกยา
+}
+</script>
+
+</body>
+</html>
